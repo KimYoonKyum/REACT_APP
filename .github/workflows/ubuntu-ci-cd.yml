@@ -34,12 +34,12 @@ jobs:
     - name: Archive production artifacts
       run: tar -czvf build.tar.gz dist/*
       # 결과물 용량 확인
-    - run: du -sh dist/build.tar.gz
+    - run: du -sh build.tar.gz
     - name: Copy files via scp
       uses: appleboy/ssh-action@master
       with:
         host: ${{ secrets.HOST }}
         username: ${{ secrets.USERNAME }}
         key: ${{ secrets.KEYPAIR }}
-        source: "dist/build.tar.gz"
+        source: "build.tar.gz"
         target: "/home/ubuntu/web-build"
