@@ -33,6 +33,8 @@ jobs:
       # 빌드 결과물 압축
     - name: Archive production artifacts
       run: tar -czvf build.tar.gz dist/*
+      # 결과물 용량 확인
+    - run: du -sh dist/build.tar.gz
     - name: Copy files via scp
       uses: appleboy/ssh-action@master
       with:
